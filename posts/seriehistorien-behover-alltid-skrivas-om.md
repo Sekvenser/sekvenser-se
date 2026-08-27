@@ -16,7 +16,7 @@ Var har till exempel Hokosai och japanska tecknade serien gemensamt?
 
 ![alt text](../assets/astro-boy.jpg "'Astro Boy' av Osamu Tezuka")
 
-Bara ett ord visar det sig. Trots att motsatsen har upprepats gång på gång. Mer om detta i nummer 4 av Sekvenser.
+Bara ett ord visar det sig. Inget mer. Trots att motsatsen har upprepats gång på gång. Mer om detta i nummer 4 av Sekvenser.
 
 Nästa nummer beräknas komma ut i slutet av oktober. Och fram tills dess kan du beställa våra tidigare nummer i
 vår [webbshopp](/#/webbshop)
