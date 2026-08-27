@@ -8,10 +8,13 @@ import html
 import re
 import sys
 from pathlib import Path
+from urllib.parse import urljoin
 
 ROOT = Path(__file__).parent
 POSTS_DIR = ROOT / "posts"
 OUT_DIR = ROOT / "blog"
+DEFAULT_IMAGE = "https://sekvenser.se/assets/share.png"
+IMAGE_SRC_RE = re.compile(r'!\[.*?\]\((\S+?)(?:\s+".*?")?\)')
 
 HEADER = """<header>
   <div class="masthead">
@@ -153,6 +156,13 @@ def excerpt(md, length=160):
     return (text[:length] + "…") if len(text) > length else text
 
 
+def share_image(meta, body, page_url):
+    if meta.get("image"):
+        return urljoin(page_url, meta["image"])
+    m = IMAGE_SRC_RE.search(body)
+    return urljoin(page_url, m.group(1)) if m else DEFAULT_IMAGE
+
+
 def build():
     OUT_DIR.mkdir(exist_ok=True)
     posts = []
@@ -174,12 +184,13 @@ def build():
             f'<p><a href="./">&larr; Alla inlägg</a></p>'
             f"</article>"
         )
+        page_url = f"https://sekvenser.se/blog/{slug}.html"
         html_out = PAGE.format(
             title=f"{meta.get('title', slug)} &ndash; Sekvenser",
             description=html.escape(meta["excerpt"]),
             root="../",
-            url=f"https://sekvenser.se/blog/{slug}.html",
-            image="https://sekvenser.se/assets/share.png",
+            url=page_url,
+            image=share_image(meta, body, page_url),
             header=HEADER.format(root="../", blog_active="active"),
             body=post_body,
             footer=FOOTER,
@@ -190,13 +201,15 @@ def build():
     items = []
     for p in posts:
         tags_html = "".join(f'<span class="tag">{html.escape(t)}</span>' for t in p["tags"])
+        img_html = f'<img src="{html.escape(p["image"])}" alt="">' if p.get("image") else ""
         items.append(
-            f'<article class="card post-summary">'
-            f'<h2><a href="{p["slug"]}.html">{html.escape(p.get("title", p["slug"]))}</a></h2>'
+            f'<a class="card post-summary" href="{p["slug"]}.html">'
+            f'<h2>{html.escape(p.get("title", p["slug"]))}</h2>'
+            f"{img_html}"
             f'<p class="byline">{p.get("date", "")} &middot; {p.get("author", "")}</p>'
             f'<p>{html.escape(p["excerpt"])}</p>'
             f'<p class="tags">{tags_html}</p>'
-            f"</article>"
+            f"</a>"
         )
     index_html = PAGE.format(
         title="Blogg &ndash; Sekvenser",
