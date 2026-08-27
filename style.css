@@ -93,6 +93,15 @@ main { padding: 2rem 1.5rem 3rem; max-width: 700px; margin: 0 auto; }
 }
 .card p { margin: 0.35rem 0; line-height: 1.6; }
 .card a { color: var(--accent); }
+.card img { display: block; width: 100%; height: auto; margin: 0.75rem 0; }
+.card figure { margin: 0.75rem 0; }
+.card figure img { margin: 0; }
+.card figcaption {
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-top: 0.35rem;
+}
 
 .links-list { list-style: none; margin: 0; padding: 0; }
 .links-list li { margin: 0.5rem 0; }
@@ -111,7 +120,6 @@ main { padding: 2rem 1.5rem 3rem; max-width: 700px; margin: 0 auto; }
   font-size: 0.85rem;
   margin: -0.25rem 0 1rem;
 }
-.post img, .post-summary img { max-width: 100%; height: auto; }
 .post pre {
   background: var(--bg);
   border: 1px solid var(--border);

@@ -6,7 +6,7 @@ tags: seriehistoria
 ---
 
 Till nästa nummer av Sekvenser, nummer 4, har vi ett flertal artiklar som berör den tecknade
-seriehistorien. Tyvärr publiceras väldigt lite på svenska gällande den tecknade seriens historia,
+seriens historia. Tyvärr publiceras väldigt lite på svenska gällande den tecknade seriens historia,
 och de fåtal böcker som finns, hade behövt skrivas om flera gånger om genom åren. Så vi kommer under
 rubriken "Omtag" publicera texter som tar en ny titt på den tecknade seriens historia - här i Sverige
 liksom ute i världen.

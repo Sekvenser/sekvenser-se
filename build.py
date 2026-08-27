@@ -135,6 +135,14 @@ def markdown_to_html(md):
         while i < len(lines) and lines[i].strip():
             para.append(lines[i])
             i += 1
+        img = re.match(r'^!\[(.*?)\]\((\S+?)(?:\s+"(.*?)")?\)$', para[0]) if len(para) == 1 else None
+        if img:
+            alt, src, caption = img.groups()
+            fig = f'<img src="{html.escape(src)}" alt="{html.escape(alt)}">'
+            if caption:
+                fig += f"<figcaption>{inline(caption)}</figcaption>"
+            out.append(f"<figure>{fig}</figure>")
+            continue
         out.append(f"<p>{inline(' '.join(para))}</p>")
     return "\n".join(out)
 
