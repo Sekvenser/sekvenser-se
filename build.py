@@ -245,8 +245,8 @@ def build():
         items.append(
             f'<a class="card post-summary" href="{p["slug"]}.html">'
             f'<h2>{html.escape(p.get("title", p["slug"]))}</h2>'
-            f"{img_html}"
             f'<p class="byline">{p.get("date", "")} &middot; {p.get("author", "")}</p>'
+            f"{img_html}"
             f'<p>{html.escape(p["excerpt"])}</p>'
             f'<p class="tags">{tags_html}</p>'
             f"</a>"
