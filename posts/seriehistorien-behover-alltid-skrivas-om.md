@@ -10,7 +10,7 @@ I nästa nummer av Sekvenser, nummer 4, samlar vi flera artiklar kring seriemedi
 
 ”Omtag” är tänkt som en återkommande avdelning.
 
-Vad har till exempel Hokosai och japanska tecknade serien gemensamt?
+Vad har till exempel Hokosai och japanska tecknade serier gemensamt?
 
 ![alt text](../assets/hokusai.jpg "'Under vågen utanför Kanagawa' av Hokusai")
 
