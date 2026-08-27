@@ -105,6 +105,36 @@ main { padding: 2rem 1.5rem 3rem; max-width: 700px; margin: 0 auto; }
 
 #publit-webshop-root { min-height: 200px; }
 
+.post .byline, .post-summary .byline {
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  margin: -0.25rem 0 1rem;
+}
+.post img, .post-summary img { max-width: 100%; height: auto; }
+.post pre {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: 0.75rem 1rem;
+  overflow-x: auto;
+}
+.post code, .post-summary code { font-family: monospace; }
+.tags { margin-top: 1rem; }
+.tag {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  padding: 0.1rem 0.5rem;
+  margin: 0 0.35rem 0.35rem 0;
+}
+.post-summary h2 { margin: 0 0 0.25rem; font-size: 1.3rem; }
+.post-summary h2 a { color: var(--fg); text-decoration: none; }
+.post-summary h2 a:hover { color: var(--accent); }
+
 footer {
   padding: 1.75rem 1.5rem;
   border-top: 1px solid var(--border);
