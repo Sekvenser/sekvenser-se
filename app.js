@@ -1,5 +1,5 @@
-const TABS = ["webbshop", "om", "kontakt", "lankar"];
-const DEFAULT_TAB = "webbshop";
+const TABS = ["om", "webbshop", "kontakt", "lankar"];
+const DEFAULT_TAB = "om";
 
 function loadPublitWebshop() {
   if (document.querySelector('script[src="https://webshop.publit.com/publit-webshop-1.0.js"]')) return;

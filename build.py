@@ -19,8 +19,8 @@ HEADER = """<header>
     <p class="tagline">[ˈtɛkːnadɛ ˈseːrjɛr]</p>
   </div>
   <nav class="toolbar">
-    <a href="{root}index.html#/webbshop">Webbshop</a>
     <a href="{root}index.html#/om">Om</a>
+    <a href="{root}index.html#/webbshop">Webbshop</a>
     <a href="{root}index.html#/kontakt">Kontakt</a>
     <a href="{root}index.html#/lankar">Länkar</a>
     <a href="{root}blog/" class="{blog_active}">Blogg</a>
