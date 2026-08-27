@@ -72,6 +72,7 @@ header { border-top: 4px solid var(--accent); }
 }
 .toolbar a:hover { color: var(--fg); }
 .toolbar a.active { color: var(--fg); border-bottom-color: var(--accent); }
+.toolbar a.external { border-bottom-color: var(--border); }
 
 main { padding: 2rem 1.5rem 3rem; max-width: 700px; margin: 0 auto; }
 
