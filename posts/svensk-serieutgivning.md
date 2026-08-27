@@ -3,7 +3,7 @@ title: Svensk serieutgivning
 date: 2026-08-26
 author: Mikke Schirén
 tags: serieutgivning, index
-image: ../assets/svensk-utgivning.png
+image: ../assets/svensk-utgivning.webp
 ---
 
 Information om vad som ges ut i serieväg i Sverige är svårt att överblicka. Därför har vi
@@ -14,4 +14,4 @@ Tanken är att även fansins och facklitteratur inom området ska finnas med. Oc
 sida tillsammans med er, ni kan själva bidra eller komplettera med information, mer info om detta
 hittar ni i [git-repot](https://github.com/Sekvenser/utgivning-tecknade-serier).
 
-![Skärmdump från Svenska tecknade serier](../assets/svensk-utgivning.png "Svenska serieutgivningen nu samlad på en plats")
+![Skärmdump från Svenska tecknade serier](../assets/svensk-utgivning.webp "Svenska serieutgivningen nu samlad på en plats")

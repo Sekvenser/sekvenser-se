@@ -32,3 +32,13 @@ This generates `blog/<slug>.html` per post plus `blog/index.html` (a listing), f
 Each post's `og:image`/`twitter:image` (used when sharing the link) is picked in this order: the frontmatter `image:` field, then the first `![...](...)` image in the post body, then `assets/share.png` as a default.
 
 To add a post: create `posts/your-slug.md` with the frontmatter above, run `python3 build.py` to check it, then commit and push.
+
+## Images
+
+Before referencing a photo in a post or `index.html`, shrink and convert it with `optimize_image.py` (needs Pillow: `pip install pillow`):
+
+```
+python3 optimize_image.py assets/photo.jpg
+```
+
+This writes `assets/photo.webp` resized to 1200px wide (the site's content column is ~604px, so 1200px covers retina screens without shipping oversized source photos) and re-encoded as webp. Use the `.webp` file's path in the post/frontmatter/`<img>` tag; the original is left untouched.
