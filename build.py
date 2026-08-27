@@ -7,14 +7,24 @@ Usage: python3 build.py
 import html
 import re
 import sys
+from datetime import datetime
 from pathlib import Path
 from urllib.parse import urljoin
+from xml.sax.saxutils import escape as xescape
 
 ROOT = Path(__file__).parent
 POSTS_DIR = ROOT / "posts"
 OUT_DIR = ROOT / "blog"
 DEFAULT_IMAGE = "https://sekvenser.se/assets/share.png"
 IMAGE_SRC_RE = re.compile(r'!\[.*?\]\((\S+?)(?:\s+".*?")?\)')
+RSS_ICON = (
+    '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" '
+    'stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
+    '<path d="M4 11a9 9 0 0 1 9 9"></path>'
+    '<path d="M4 4a16 16 0 0 1 16 16"></path>'
+    '<circle cx="5" cy="19" r="1.5" fill="currentColor"></circle>'
+    "</svg>"
+)
 
 HEADER = """<header>
   <div class="masthead">
@@ -43,6 +53,7 @@ PAGE = """<!DOCTYPE html>
 <meta name="description" content="{description}">
 <link rel="icon" href="{root}assets/favicon.ico">
 <link rel="stylesheet" href="{root}style.css">
+<link rel="alternate" type="application/rss+xml" title="Sekvenser" href="{root}blog/rss.xml">
 
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Sekvenser">
@@ -163,6 +174,34 @@ def share_image(meta, body, page_url):
     return urljoin(page_url, m.group(1)) if m else DEFAULT_IMAGE
 
 
+def build_rss(posts):
+    items = []
+    for p in posts:
+        pub_date = datetime.strptime(p["date"], "%Y-%m-%d").strftime("%a, %d %b %Y 00:00:00 GMT")
+        categories = "".join(f"<category>{xescape(t)}</category>" for t in p["tags"])
+        items.append(
+            "<item>"
+            f"<title>{xescape(p.get('title', p['slug']))}</title>"
+            f"<link>{xescape(p['url'])}</link>"
+            f"<guid>{xescape(p['url'])}</guid>"
+            f"<pubDate>{pub_date}</pubDate>"
+            f"<description>{xescape(p['excerpt'])}</description>"
+            f"{categories}"
+            "</item>"
+        )
+    rss = (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<rss version="2.0"><channel>'
+        "<title>Sekvenser</title>"
+        "<link>https://sekvenser.se/blog/</link>"
+        "<description>Nyheter och inlägg från Sekvenser.</description>"
+        "<language>sv-se</language>"
+        f"{''.join(items)}"
+        "</channel></rss>"
+    )
+    (OUT_DIR / "rss.xml").write_text(rss)
+
+
 def build():
     OUT_DIR.mkdir(exist_ok=True)
     posts = []
@@ -185,6 +224,7 @@ def build():
             f"</article>"
         )
         page_url = f"https://sekvenser.se/blog/{slug}.html"
+        meta["url"] = page_url
         html_out = PAGE.format(
             title=f"{meta.get('title', slug)} &ndash; Sekvenser",
             description=html.escape(meta["excerpt"]),
@@ -211,6 +251,7 @@ def build():
             f'<p class="tags">{tags_html}</p>'
             f"</a>"
         )
+    items.append(f'<p><a class="rss-link" href="rss.xml">{RSS_ICON} RSS-flöde</a></p>')
     index_html = PAGE.format(
         title="Blogg &ndash; Sekvenser",
         description="Nyheter och inlägg från Sekvenser.",
@@ -222,6 +263,7 @@ def build():
         footer=FOOTER,
     )
     (OUT_DIR / "index.html").write_text(index_html)
+    build_rss(posts)
     print(f"built {len(posts)} post(s) into {OUT_DIR}/")
 
 
