@@ -24,9 +24,9 @@ HEADER = """<header>
   <nav class="toolbar">
     <a href="{root}index.html#/om">Om</a>
     <a href="{root}index.html#/webbshop">Webbshop</a>
+    <a href="{root}blog/" class="{blog_active}">Blogg</a>
     <a href="{root}index.html#/kontakt">Kontakt</a>
     <a href="{root}index.html#/lankar">Länkar</a>
-    <a href="{root}blog/" class="{blog_active}">Blogg</a>
     <a href="https://serieutgivning.sekvenser.se/" target="_blank" rel="noopener noreferrer" class="external">Svensk serieutgivning</a>
   </nav>
 </header>
