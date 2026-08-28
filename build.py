@@ -202,6 +202,21 @@ def build_rss(posts):
     (OUT_DIR / "rss.xml").write_text(rss)
 
 
+def build_sitemap(posts):
+    entries = ["<url><loc>https://sekvenser.se/</loc></url>"]
+    blog_lastmod = f"<lastmod>{posts[0]['date']}</lastmod>" if posts else ""
+    entries.append(f"<url><loc>https://sekvenser.se/blog/</loc>{blog_lastmod}</url>")
+    for p in posts:
+        entries.append(f"<url><loc>{xescape(p['url'])}</loc><lastmod>{p['date']}</lastmod></url>")
+    sitemap = (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
+        f"{''.join(entries)}"
+        "</urlset>"
+    )
+    (ROOT / "sitemap.xml").write_text(sitemap)
+
+
 def build():
     OUT_DIR.mkdir(exist_ok=True)
     posts = []
@@ -264,6 +279,7 @@ def build():
     )
     (OUT_DIR / "index.html").write_text(index_html)
     build_rss(posts)
+    build_sitemap(posts)
     print(f"built {len(posts)} post(s) into {OUT_DIR}/")
 
 
