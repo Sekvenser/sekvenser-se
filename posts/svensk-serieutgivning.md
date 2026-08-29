@@ -7,7 +7,7 @@ image: ../assets/svensk-utgivning.webp
 ---
 
 Information om vad som ges ut i serieväg i Sverige är svårt att överblicka. Därför har vi
-skapat upp en ny tjänst, "[Svenska tecknade serier](https://serieutgivning.sekvenser.se/)".
+skapat upp en ny tjänst, ”[Svenska tecknade serier](https://serieutgivning.sekvenser.se/)”.
 
 Från ett antal olika källor, så kan ni nu hitta det mesta som ges ut i Sverige på en enda plats.
 Tanken är att även fansins och facklitteratur inom området ska finnas med. Och vi bygger denna
