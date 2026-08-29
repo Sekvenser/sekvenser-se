@@ -17,6 +17,6 @@ har publicerats i bokform.
 
 ![Exempel av Garfield Minus Garfield ](../assets/garfield-minus.webp "Exempel av Garfield Minus Garfield")
 
-Benoît lyfter fram fler exempel på hur man genom att förändra ett existerande verk, genom att bortteckna, omteckna och teckna. Du kan läsa hela hans essä i första numret av Sekvenser, som ni kan köpa i vår [webbshopp](/#/webbshop).
+Benoît lyfter fram fler exempel på hur man genom att förändra ett existerande verk, genom att bortteckna, omteckna och teckna skapar fristående verk, ibland större än originalet. Du kan läsa hela hans essä i första numret av Sekvenser, som ni kan köpa i vår [webbshopp](/#/webbshop).
 
 Läs [Garfield Minus Garfield](https://garfieldminusgarfield.net/)
