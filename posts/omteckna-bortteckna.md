@@ -6,7 +6,7 @@ tags: serieteori, omteckna, bortteckna
 image: ../assets/garfield-minus.webp
 ---
 
-I essän "Teckna, omteckna och bortteckna" lyfter den belgiska Benoît Crucifix fram flera exempel på hur man
+I essän "Teckna, omteckna och bortteckna" lyfter den belgiska serieforskaren Benoît Crucifix fram flera exempel på hur man
 genom att förändra existerande serier, kan skapa något helt nytt. Det kanske mest kända exemplet på detta är
 den amerikanska serien "Garfield minus Garfield", där irländaren Dan Walsh genom att ta bort
 Katten Gustaf (Garfield) från serien, skapade ett helt ny innehåll. Serien blev plötsligt ångestfylld, och
