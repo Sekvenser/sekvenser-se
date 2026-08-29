@@ -14,3 +14,5 @@ I nummer 2-3 av Sekvenser hittar ni en längre intervju med Jean-Louis, gjord av
 
 I intervjun får ni höra om några av förlagets misslyckanden, men om även om det som gått bra, och givetvis om hans långa
 relation med Robert Crumb och hans verk.
+
+Numret kan ni köpa i vår [webbshopp](/#/webbshop).
