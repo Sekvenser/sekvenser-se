@@ -10,12 +10,12 @@ Det som vi i dag anser vara en serieroman, och vad som ansågs vara en serieroma
 Serieroman (en. ”graphic novel”) som uttryck var något som slog igenom i och med Will Eisners
 bok ”[Ett hus i Bronx](https://seriewikin.serieframjandet.se/index.php/Ett_hus_i_Bronx)” (en. ”A Contract with God”). Dock var boken ingen serieroman, utan en samling av serienoveller, om vi utgår från vad som brukar anses vara en serieroman i dag.
 
-![Utdrag ur 'Ett hus i Bronx'](../assets/contract-with-god.webp "Utrdrag ur ”Ett hus i Bronx”, av Will Eisner.")
+![Utdrag ur ”Ett hus i Bronx”](../assets/contract-with-god.webp "Utrdrag ur ”Ett hus i Bronx”, av Will Eisner.")
 
 Men diskussionen om serieromanen som form började långt innan Eisner, och det är något vi tittar på i nästa nummer av _Sekvenser_. Med det kommer även frågan, vilken var den första svenska serieromanen?
 
 Vi ska definitivt inte lita på vad Googles Gemini anser i alla fall.
 
-![AI-svar från Google Gemini](../assets/gemini-svenska-serieromanen.webp "'Mannen från kylan' en icke existerande bok av Rolf Gohs.")
+![AI-svar från Google Gemini](../assets/gemini-svenska-serieromanen.webp "”Mannen från kylan” en icke existerande bok av Rolf Gohs.")
 
-Gemini anger [Rogers Seriemagasin](https://rogersmagasin.com/serieskapare-tecknare-och-manusforfattare/rolf-gohs/) som källa, men Roger Schaeder vet bättre än att hitta på en bok av Rolf Gohs som aldrig existerat. Det är vad som brukar kallas en AI-hallucination (eller på ren svenska, en lögn).
+Gemini anger [Rogers Seriemagasin](https://rogersmagasin.com/serieskapare-tecknare-och-manusforfattare/rolf-gohs/) som källa, men Roger Schaeder vet bättre än att hitta på en bok av Rolf Gohs som aldrig existerat. Det är vad som brukar kallas en AI-hallucination (eller på ren svenska, en lögn). Men möjligen ska Rolf Gohs (existerande) ”Mystiska 2:an”-album betraktas som tidiga serieromaner?
