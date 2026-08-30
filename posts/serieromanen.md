@@ -8,7 +8,7 @@ image: ../assets/gemini-svenska-serieromanen.webp
 Det som vi i dag anser vara en serieroman, och vad som ansågs vara en serieroman när begreppet först ’lanserades’, kan skilja sig rejält åt.
 
 Serieroman (en. ”graphic novel”) som uttryck var något som slog igenom i och med Will Eisners
-bok ”Ett hus i Bronx” (en. ”A Contract with God”). Dock var boken ingen serieroman, utan en samling av serienoveller.
+bok ”Ett hus i Bronx” (en. ”A Contract with God”). Dock var boken ingen serieroman, utan en samling av serienoveller, om vi utgår från vad som brukar anses vara en serieroman i dag.
 
 ![Utdrag ur 'Ett hus i Bronx'](../assets/contract-with-god.webp "Utrdrag ur ”Ett hus i Bronx”, av Will Eisner.")
 
