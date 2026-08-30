@@ -27,7 +27,9 @@ python3 build.py
 open blog/index.html
 ```
 
-This generates `blog/<slug>.html` per post, `blog/index.html` (a listing), `blog/rss.xml` (an RSS 2.0 feed of all posts), and `sitemap.xml` at the site root (homepage, blog index, and every post), from `posts/*.md`. All of this generated output is gitignored — CI runs `build.py` automatically before every deploy, so just commit the `.md` file and push.
+This generates `blog/<slug>.html` per post, `blog/index.html` (a listing), `blog/tags/<tag>.html` per tag used across all posts, `blog/rss.xml` (an RSS 2.0 feed of all posts), and `sitemap.xml` at the site root (homepage, blog index, every post, and every tag page), from `posts/*.md`. All of this generated output is gitignored — CI runs `build.py` automatically before every deploy, so just commit the `.md` file and push.
+
+Tags are clickable on a post's own page, linking to that tag's listing. They're plain text on listing cards (post-summary and tag-page cards), since those cards are themselves links to the post — nesting a link inside a link isn't valid HTML.
 
 Each post's `og:image`/`twitter:image` (used when sharing the link) is picked in this order: the frontmatter `image:` field, then the first `![...](...)` image in the post body, then `assets/share.png` as a default.
 

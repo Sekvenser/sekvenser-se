@@ -176,6 +176,58 @@ def share_image(meta, body, page_url):
     return urljoin(page_url, m.group(1)) if m else DEFAULT_IMAGE
 
 
+def tag_slug(tag):
+    return re.sub(r"[^\w-]", "", tag.strip().lower().replace(" ", "-"))
+
+
+def render_tags(tags, href_prefix):
+    return "".join(f'<a class="tag" href="{href_prefix}{tag_slug(t)}.html">{html.escape(t)}</a>' for t in tags)
+
+
+def post_summary_card(p, post_href_prefix="", tag_href_prefix="tags/"):
+    tags_html = render_tags(p["tags"], tag_href_prefix)
+    img_src = f"{post_href_prefix}{p['image']}" if p.get("image") else None
+    img_html = f'<img src="{html.escape(img_src)}" alt="">' if img_src else ""
+    return (
+        f'<div class="card post-summary">'
+        f'<h2><a href="{post_href_prefix}{p["slug"]}.html">{html.escape(p.get("title", p["slug"]))}</a></h2>'
+        f'<p class="byline">{p.get("date", "")} &middot; {p.get("author", "")}</p>'
+        f"{img_html}"
+        f'<p>{html.escape(p["excerpt"])}</p>'
+        f'<p class="tags">{tags_html}</p>'
+        f"</div>"
+    )
+
+
+def build_tag_pages(posts):
+    by_tag = {}
+    for p in posts:
+        for t in p["tags"]:
+            by_tag.setdefault(t, []).append(p)
+    tags_dir = OUT_DIR / "tags"
+    tags_dir.mkdir(exist_ok=True)
+    for tag, tag_posts in by_tag.items():
+        slug = tag_slug(tag)
+        cards = "\n".join(post_summary_card(p, post_href_prefix="../", tag_href_prefix="") for p in tag_posts)
+        body = (
+            f'<div class="card"><h2>Tagg: {html.escape(tag)}</h2>'
+            f'<p><a href="../index.html">&larr; Alla inlägg</a></p></div>'
+            f"{cards}"
+        )
+        page_html = PAGE.format(
+            title=f"Tagg: {html.escape(tag)} &ndash; Sekvenser",
+            description=f"Inlägg taggade {html.escape(tag)} på Sekvenser.",
+            root="../../",
+            url=f"https://sekvenser.se/blog/tags/{slug}.html",
+            image=DEFAULT_IMAGE,
+            header=HEADER.format(root="../../", blog_active="active"),
+            body=body,
+            footer=FOOTER,
+        )
+        (tags_dir / f"{slug}.html").write_text(page_html)
+    return by_tag
+
+
 def build_rss(posts):
     items = []
     for p in posts:
@@ -204,12 +256,15 @@ def build_rss(posts):
     (OUT_DIR / "rss.xml").write_text(rss)
 
 
-def build_sitemap(posts):
+def build_sitemap(posts, by_tag):
     entries = ["<url><loc>https://sekvenser.se/</loc></url>"]
     blog_lastmod = f"<lastmod>{posts[0]['date']}</lastmod>" if posts else ""
     entries.append(f"<url><loc>https://sekvenser.se/blog/</loc>{blog_lastmod}</url>")
     for p in posts:
         entries.append(f"<url><loc>{xescape(p['url'])}</loc><lastmod>{p['date']}</lastmod></url>")
+    for tag, tag_posts in by_tag.items():
+        loc = f"https://sekvenser.se/blog/tags/{tag_slug(tag)}.html"
+        entries.append(f"<url><loc>{xescape(loc)}</loc><lastmod>{tag_posts[0]['date']}</lastmod></url>")
     sitemap = (
         '<?xml version="1.0" encoding="UTF-8"?>\n'
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
@@ -230,7 +285,7 @@ def build():
         posts.append(meta)
 
         byline = f"{meta.get('date', '')} &middot; {meta.get('author', '')}"
-        tags_html = "".join(f'<span class="tag">{html.escape(t)}</span>' for t in meta["tags"])
+        tags_html = render_tags(meta["tags"], "tags/")
         post_body = (
             f'<article class="card post">'
             f'<h1>{html.escape(meta.get("title", slug))}</h1>'
@@ -255,19 +310,7 @@ def build():
         (OUT_DIR / f"{slug}.html").write_text(html_out)
 
     posts.sort(key=lambda p: p.get("date", ""), reverse=True)
-    items = []
-    for p in posts:
-        tags_html = "".join(f'<span class="tag">{html.escape(t)}</span>' for t in p["tags"])
-        img_html = f'<img src="{html.escape(p["image"])}" alt="">' if p.get("image") else ""
-        items.append(
-            f'<a class="card post-summary" href="{p["slug"]}.html">'
-            f'<h2>{html.escape(p.get("title", p["slug"]))}</h2>'
-            f'<p class="byline">{p.get("date", "")} &middot; {p.get("author", "")}</p>'
-            f"{img_html}"
-            f'<p>{html.escape(p["excerpt"])}</p>'
-            f'<p class="tags">{tags_html}</p>'
-            f"</a>"
-        )
+    items = [post_summary_card(p) for p in posts]
     items.append(f'<p><a class="rss-link" href="rss.xml">{RSS_ICON} RSS-flöde</a></p>')
     index_html = PAGE.format(
         title="Blogg &ndash; Sekvenser",
@@ -280,8 +323,9 @@ def build():
         footer=FOOTER,
     )
     (OUT_DIR / "index.html").write_text(index_html)
+    by_tag = build_tag_pages(posts)
     build_rss(posts)
-    build_sitemap(posts)
+    build_sitemap(posts, by_tag)
     print(f"built {len(posts)} post(s) into {OUT_DIR}/")
 
 

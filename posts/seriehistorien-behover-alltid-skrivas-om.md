@@ -2,7 +2,7 @@
 title: Seriehistorien behöver alltid skrivas om
 date: 2026-08-27
 author: Mikke Schirén
-tags: seriehistoria
+tags: seriehistoria, omtag
 image: ../assets/hokusai.webp
 ---
 

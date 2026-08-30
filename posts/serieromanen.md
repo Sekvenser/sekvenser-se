@@ -2,7 +2,7 @@
 title: Den första svenska serieromanen?
 date: 2026-08-30
 author: Mikke Schirén
-tags: seriehistoria, omtag, eisner, gohs
+tags: seriehistoria, omtag, will eisner, rolf gohs
 image: ../assets/gemini-svenska-serieromanen.webp
 ---
 Det som vi i dag anser vara en serieroman, och vad som ansågs vara en serieroman när begreppet först ’lanserades’, kan skilja sig rejält åt.
