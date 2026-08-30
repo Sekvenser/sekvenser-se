@@ -27,7 +27,7 @@ python3 build.py
 open blog/index.html
 ```
 
-This generates `blog/<slug>.html` per post, `blog/index.html` (a listing), and `blog/rss.xml` (an RSS 2.0 feed of all posts), from `posts/*.md`. The `blog/` output is gitignored — CI runs `build.py` automatically before every deploy, so just commit the `.md` file and push.
+This generates `blog/<slug>.html` per post, `blog/index.html` (a listing), `blog/rss.xml` (an RSS 2.0 feed of all posts), and `sitemap.xml` at the site root (homepage, blog index, and every post), from `posts/*.md`. All of this generated output is gitignored — CI runs `build.py` automatically before every deploy, so just commit the `.md` file and push.
 
 Each post's `og:image`/`twitter:image` (used when sharing the link) is picked in this order: the frontmatter `image:` field, then the first `![...](...)` image in the post body, then `assets/share.png` as a default.
 

@@ -12,7 +12,7 @@ bok ”Ett hus i Bronx” (en. ”A Contract with God”). Dock var boken ingen 
 
 ![Utdrag ur 'Ett hus i Bronx'](../assets/contract-with-god.webp "Utrdrag ur ”Ett hus i Bronx”, av Will Eisner.")
 
-Men diskussionen om serieromanen som form började långt innan Eisner, och det är något vi tittar på i nästa nummer av Sekvenser. Med det kommer även frågan, vilken var den första svenska serieromanen?
+Men diskussionen om serieromanen som form började långt innan Eisner, och det är något vi tittar på i nästa nummer av _Sekvenser_. Med det kommer även frågan, vilken var den första svenska serieromanen?
 
 Vi ska definitivt inte lita på vad Googles Gemini anser i alla fall.
 
