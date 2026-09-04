@@ -211,7 +211,9 @@ def markdown_to_html(md):
 
 def excerpt(md, length=160):
     text = re.sub(r":::\S+.*?:::", "", md.strip(), flags=re.DOTALL)
-    text = re.sub(r"[#*`\[\]!()_>]", "", text)
+    text = re.sub(r"!\[(.*?)\]\(.*?\)", r"\1", text)
+    text = re.sub(r"\[(.*?)\]\(.*?\)", r"\1", text)
+    text = re.sub(r"[#*`_>]", "", text)
     text = re.sub(r"\s+", " ", text)
     return (text[:length] + "…") if len(text) > length else text
 
