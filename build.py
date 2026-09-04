@@ -74,6 +74,7 @@ PAGE = """<!DOCTYPE html>
 {body}
 </main>
 {footer}
+<script src="{root}gallery.js" defer></script>
 </body>
 </html>
 """
@@ -106,6 +107,32 @@ def inline(text):
     return text
 
 
+def render_gallery(title, imgs):
+    if not imgs:
+        return ""
+    cover_alt, cover_src = imgs[0]
+    rest_html = "".join(
+        f'<img src="{html.escape(src)}" alt="{html.escape(alt)}" loading="lazy" hidden>'
+        for alt, src in imgs[1:]
+    )
+    label = f"Öppna galleri: {html.escape(title)}" if title else "Öppna galleri"
+    title_html = f'<span class="gallery-title">{html.escape(title)}</span>' if title else ""
+    return (
+        f'<div class="gallery">'
+        f'<button type="button" class="gallery-trigger" aria-label="{label}">'
+        f'<img src="{html.escape(cover_src)}" alt="{html.escape(cover_alt)}">'
+        f"{title_html}"
+        f"</button>"
+        f"{rest_html}"
+        f"</div>"
+    )
+
+
+def render_callout(kind, title, body):
+    title_html = f'<p class="callout-title">{html.escape(title)}</p>' if title else ""
+    return f'<div class="callout callout-{html.escape(kind)}">{title_html}{markdown_to_html(body)}</div>'
+
+
 def markdown_to_html(md):
     lines = md.strip("\n").split("\n")
     out = []
@@ -114,6 +141,25 @@ def markdown_to_html(md):
         line = lines[i]
         if not line.strip():
             i += 1
+            continue
+        fm = re.match(r"^:::(\S+)(?:\s+(.*))?$", line)
+        if fm:
+            kind, title = fm.group(1), (fm.group(2) or "").strip()
+            i += 1
+            block_lines = []
+            while i < len(lines) and lines[i].strip() != ":::":
+                block_lines.append(lines[i])
+                i += 1
+            i += 1
+            if kind == "gallery":
+                imgs = []
+                for bl in block_lines:
+                    img_m = re.match(r'^!\[(.*?)\]\((\S+?)\)$', bl.strip())
+                    if img_m:
+                        imgs.append(img_m.groups())
+                out.append(render_gallery(title, imgs))
+            else:
+                out.append(render_callout(kind, title, "\n".join(block_lines)))
             continue
         if line.startswith("```"):
             i += 1
@@ -164,7 +210,8 @@ def markdown_to_html(md):
 
 
 def excerpt(md, length=160):
-    text = re.sub(r"[#*`\[\]!()_>]", "", md.strip())
+    text = re.sub(r":::\S+.*?:::", "", md.strip(), flags=re.DOTALL)
+    text = re.sub(r"[#*`\[\]!()_>]", "", text)
     text = re.sub(r"\s+", " ", text)
     return (text[:length] + "…") if len(text) > length else text
 
