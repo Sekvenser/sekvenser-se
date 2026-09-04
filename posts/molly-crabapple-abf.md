@@ -6,7 +6,7 @@ tags: samtal, abf
 image: ../assets/here-where-we-live-is-our-country.webp
 ---
 Molly Crabapple, som bland annat skapat serieromanen ”[Scarlett Takes Manhattan](https://dokumentera.sekvenser.se/dokument/scarlett-takes-manhattan/)”, medverkat i
-ett par Marvel-antologier, serieantologin _[Occupy Comics](https://dokumentera.sekvenser.se/dokument/occupy-comics/)_ och gjort flera omslag till amerikanska serietidningar, är aktuell med sin nya bok, ”Here Where We Live Is Our Country”, som inte är
+ett par Marvel-antologier, serieantologin ”[Occupy Comics](https://dokumentera.sekvenser.se/dokument/occupy-comics/)” och gjort flera omslag till amerikanska serietidningar, är aktuell med sin nya bok, ”Here Where We Live Is Our Country”, som inte är
 en serieroman, utan en rikligt illustrerad bok om den judiska arbetarrörelsen som hennes gammelmorfar tillhörde.
 
 ![Utdrag från omslaget till ”Here Where We Live Is Our Country”](../assets/here-where-we-live-is-our-country.webp "Utdrag från omslaget till ”Here Where We Live Is Our Country”.")

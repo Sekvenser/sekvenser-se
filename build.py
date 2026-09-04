@@ -95,10 +95,17 @@ def parse_frontmatter(text):
     return meta, body
 
 
+def render_link(m):
+    text, href = m.group(1), m.group(2)
+    if re.match(r"^https?://", href):
+        return f'<a href="{href}" target="_blank" rel="noopener noreferrer">{text}</a>'
+    return f'<a href="{href}">{text}</a>'
+
+
 def inline(text):
     text = html.escape(text)
     text = re.sub(r"!\[(.*?)\]\((.*?)\)", r'<img src="\2" alt="\1">', text)
-    text = re.sub(r"\[(.*?)\]\((.*?)\)", r'<a href="\2">\1</a>', text)
+    text = re.sub(r"\[(.*?)\]\((.*?)\)", render_link, text)
     text = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", text)
     text = re.sub(r"\*(.+?)\*", r"<em>\1</em>", text)
     text = re.sub(r"(?<!\w)__(.+?)__(?!\w)", r"<strong>\1</strong>", text)
